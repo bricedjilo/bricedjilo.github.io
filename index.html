@@ -5,7 +5,7 @@
   </head>
 
   <body>
-    <div style="width: 100%; height: 1300px" id="tree" />
+    <div style="width: 100%; height: 1000px" id="tree" />
   </body>
 
   <script src="https://balkan.app/js/familytree.js"></script>
@@ -60,7 +60,7 @@
 
     var family = new FamilyTree(document.getElementById("tree"), {
       template: "tommy",
-    //   mouseScrool: FamilyTree.action.none,
+      // mouseScrool: FamilyTree.action.none,
       scaleInitial: FamilyTree.match.boundary,
       nodeBinding: {
         field_0: "name",
@@ -173,7 +173,13 @@
         { id: 11, mid: 10, fid: 9, name: "Lonkap Alexandre", gender: "male" },
 
         { id: 42, name: "Me'e Koua'a", gender: "female" },
-        { id: 40, pids: [41], mid: 42, name: "Krouketsek", gender: "male" },
+        {
+          id: 40,
+          pids: [41],
+          mid: 42,
+          name: "Prince Krouketsek (Fils du Chef Batoufam)",
+          gender: "male",
+        },
         { id: 41, pids: [40], name: "Touhleu", gender: "female" },
         {
           id: 36,

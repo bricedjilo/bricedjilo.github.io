@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div style="width: 100%; height: 1300px" id="tree" />
+  </body>
+
+  <script src="https://balkan.app/js/familytree.js"></script>
+  <script>
+    FamilyTree.templates.tommy.min = Object.assign(
+      {},
+      FamilyTree.templates.tommy
+    );
+    FamilyTree.templates.tommy.min.size = [250, 60];
+    FamilyTree.templates.tommy.min.img_0 = "";
+    (FamilyTree.templates.tommy.min.field_0 =
+      '<text class="field_0" style="font-size: 20px;" fill="#ffffff" x="125" y="30" text-anchor="middle">{val}</text>'),
+      (FamilyTree.templates.tommy.min.field_1 =
+        '<text class="field_1" style="font-size: 14px;" fill="#ffffff" x="125" y="50" text-anchor="middle">{val}</text>');
+
+    FamilyTree.templates.tommy_male.min = Object.assign(
+      {},
+      FamilyTree.templates.tommy.min
+    );
+    FamilyTree.templates.tommy_male.min.node =
+      '<rect x="0" y="0" height="{h}" width="{w}" stroke-width="1" fill="#039BE5" stroke="#aeaeae" rx="7" ry="7"></rect>';
+    FamilyTree.templates.tommy_female.min = Object.assign(
+      {},
+      FamilyTree.templates.tommy.min
+    );
+    FamilyTree.templates.tommy_female.min.node =
+      '<rect x="0" y="0" height="{h}" width="{w}" stroke-width="1" fill="#F57C00" stroke="#aeaeae" rx="7" ry="7"></rect>';
+    FamilyTree.templates.tommy.field_0 =
+      '<text class="field_0" style="font-size: 20px;" fill="#ffffff" x="125" y="30" text-anchor="middle">{val}</text>';
+    FamilyTree.templates.tommy.field_1 =
+      '<text class="field_1" style="font-size: 14px;" fill="#ffffff" x="125" y="50" text-anchor="middle">{val}</text>';
+
+    FamilyTree.templates.tommy_male.plus =
+      '<circle cx="0" cy="0" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>' +
+      '<line x1="-11" y1="0" x2="11" y2="0" stroke-width="1" stroke="#aeaeae"></line>' +
+      '<line x1="0" y1="-11" x2="0" y2="11" stroke-width="1" stroke="#aeaeae"></line>';
+    FamilyTree.templates.tommy_male.minus =
+      '<circle cx="0" cy="0" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>' +
+      '<line x1="-11" y1="0" x2="11" y2="0" stroke-width="1" stroke="#aeaeae"></line>';
+    FamilyTree.templates.tommy_female.plus =
+      '<circle cx="0" cy="0" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>' +
+      '<line x1="-11" y1="0" x2="11" y2="0" stroke-width="1" stroke="#aeaeae"></line>' +
+      '<line x1="0" y1="-11" x2="0" y2="11" stroke-width="1" stroke="#aeaeae"></line>';
+    FamilyTree.templates.tommy_female.minus =
+      '<circle cx="0" cy="0" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>' +
+      '<line x1="-11" y1="0" x2="11" y2="0" stroke-width="1" stroke="#aeaeae"></line>';
+
+    FamilyTree.templates.tommy_female.defs =
+      '<g transform="matrix(0.05,0,0,0.05,-12,-9)" id="heart"><path fill="#F57C00" d="M438.482,58.61c-24.7-26.549-59.311-41.655-95.573-41.711c-36.291,0.042-70.938,15.14-95.676,41.694l-8.431,8.909  l-8.431-8.909C181.284,5.762,98.663,2.728,45.832,51.815c-2.341,2.176-4.602,4.436-6.778,6.778 c-52.072,56.166-52.072,142.968,0,199.134l187.358,197.581c6.482,6.843,17.284,7.136,24.127,0.654 c0.224-0.212,0.442-0.43,0.654-0.654l187.29-197.581C490.551,201.567,490.551,114.77,438.482,58.61z"/><g>';
+    FamilyTree.templates.tommy_male.defs =
+      '<g transform="matrix(0.05,0,0,0.05,-12,-9)" id="heart"><path fill="#F57C00" d="M438.482,58.61c-24.7-26.549-59.311-41.655-95.573-41.711c-36.291,0.042-70.938,15.14-95.676,41.694l-8.431,8.909  l-8.431-8.909C181.284,5.762,98.663,2.728,45.832,51.815c-2.341,2.176-4.602,4.436-6.778,6.778 c-52.072,56.166-52.072,142.968,0,199.134l187.358,197.581c6.482,6.843,17.284,7.136,24.127,0.654 c0.224-0.212,0.442-0.43,0.654-0.654l187.29-197.581C490.551,201.567,490.551,114.77,438.482,58.61z"/><g>';
+
+    var family = new FamilyTree(document.getElementById("tree"), {
+      template: "tommy",
+    //   mouseScrool: FamilyTree.action.none,
+      scaleInitial: FamilyTree.match.boundary,
+      nodeBinding: {
+        field_0: "name",
+        field_1: "relation",
+      },
+      nodes: [
+        { id: -1, pids: [0], name: "Zeudiack", gender: "male" },
+        {
+          id: 0,
+          pids: [-1],
+          name: "Une femme ???",
+          gender: "female",
+        },
+        {
+          id: 1,
+          pids: [2, 23],
+          mid: 0,
+          fid: -1,
+          name: "Tiessonkoueu",
+          gender: "male",
+          relation: "grandfather",
+        },
+        {
+          id: 23,
+          pids: [1],
+          name: "Une femme ???",
+          gender: "female",
+        },
+
+        { id: 35, name: "Wonguep", gender: "female" },
+        { id: 34, mid: 35, name: "Tchanang", gender: "male" },
+        { id: 32, pids: [33], name: "Joanang", gender: "female" },
+        { id: 33, pids: [32], fid: 34, name: "Tchanang", gender: "male" },
+        {
+          id: 25,
+          pids: [24, 26],
+          mid: 32,
+          fid: 33,
+          name: "Toulo (Telop?) Fokap",
+          gender: "male",
+        },
+        {
+          id: 24,
+          pids: [25],
+          mid: 23,
+          fid: 1,
+          name: "Guemnang",
+          gender: "female",
+        },
+        {
+          id: 27,
+          pids: [28],
+          mid: 24,
+          fid: 25,
+          name: "Kouowo Pauline",
+          gender: "female",
+        },
+        { id: 28, pids: [27], name: "Sa Majeste Toukap", gender: "male" },
+        { id: 29, mid: 27, fid: 28, name: "Sa Majeste Nayang", gender: "male" },
+
+        { id: 26, pids: [25], name: "Kamdem", gender: "female" },
+
+        { id: 2, pids: [1], name: "Meu Guenack", gender: "female" },
+        { id: 3, pids: [4], mid: 1, fid: 2, name: "Te Sonkap", gender: "male" },
+        { id: 4, pids: [3], name: "Une femme ???", gender: "female" },
+        {
+          id: 5,
+          pids: [6, 7],
+          mid: 4,
+          fid: 3,
+          name: "Guamnack",
+          gender: "male",
+        },
+        { id: 6, pids: [5], name: "Tadjop", gender: "female" },
+
+        {
+          id: 30,
+          pids: [31],
+          mid: 26,
+          fid: 25,
+          name: "Nono",
+          gender: "female",
+        },
+        { id: 31, pids: [30], name: "TeTchanack", gender: "male" },
+        {
+          id: 7,
+          pids: [5],
+          mid: 30,
+          fid: 31,
+          name: "Donkap",
+          gender: "female",
+        },
+        {
+          id: 8,
+          pids: [12],
+          mid: 7,
+          fid: 5,
+          name: "Moaffo Ngongang",
+          gender: "male",
+        },
+        {
+          id: 9,
+          pids: [10],
+          mid: 6,
+          fid: 5,
+          name: "Te Sonkap Bogne",
+          gender: "male",
+        },
+        { id: 10, pids: [9], name: "Guemdjop", gender: "female" },
+        { id: 11, mid: 10, fid: 9, name: "Lonkap Alexandre", gender: "male" },
+
+        { id: 42, name: "Me'e Koua'a", gender: "female" },
+        { id: 40, pids: [41], mid: 42, name: "Krouketsek", gender: "male" },
+        { id: 41, pids: [40], name: "Touhleu", gender: "female" },
+        {
+          id: 36,
+          pids: [37],
+          mid: 41,
+          fid: 40,
+          name: "Boupda",
+          gender: "male",
+        },
+        { id: 38, pids: [39], name: "Kaptsok", gender: "female" },
+        { id: 39, pids: [38], name: "Mouebo Te Koutchak", gender: "male" },
+        {
+          id: 37,
+          pids: [36],
+          mid: 38,
+          fid: 39,
+          name: "Nguedop",
+          gender: "female",
+        },
+        {
+          id: 12,
+          pids: [8],
+          mid: 37,
+          fid: 36,
+          name: "Tsiemi Tapi",
+          gender: "female",
+        },
+        {
+          id: 13,
+          pids: [17],
+          mid: 12,
+          fid: 8,
+          name: "Tchatchouang David (Fotso)",
+          gender: "male",
+        },
+        { id: 17, pids: [13], name: "Takedjeu Genevieve", gender: "female" },
+        { id: 18, mid: 17, fid: 13, name: "Rostand Ngongang", gender: "male" },
+        { id: 19, mid: 17, fid: 13, name: "Diebo Idris Joel", gender: "male" },
+        { id: 20, mid: 17, fid: 13, name: "Brice Djilo", gender: "male" },
+        { id: 21, mid: 17, fid: 13, name: "Carolle Tsiemi", gender: "female" },
+        { id: 22, mid: 17, fid: 13, name: "Josiane Tiedjou", gender: "female" },
+
+        { id: 14, mid: 12, fid: 8, name: "Pauline", gender: "female" },
+        { id: 15, mid: 12, fid: 8, name: "Emanuel", gender: "male" },
+        { id: 16, mid: 12, fid: 8, name: "Julienne", gender: "female" },
+      ],
+      min: true,
+    });
+
+    family.on("expcollclick", function (sender, isCollapsing, nodeId) {
+      var node = family.getNode(nodeId);
+      if (isCollapsing) {
+        family.expandCollapse(nodeId, [], node.ftChildrenIds);
+      } else {
+        family.expandCollapse(nodeId, node.ftChildrenIds, []);
+      }
+      return false;
+    });
+
+    family.on("render-link", function (sender, args) {
+      if (args.cnode.ppid != undefined)
+        args.html +=
+          '<use data-ctrl-ec-id="' +
+          args.node.id +
+          '" xlink:href="#heart" x="' +
+          args.p.xb +
+          '" y="' +
+          args.p.ya +
+          '"/>';
+      if (args.cnode.isPartner && args.node.partnerSeparation == 30)
+        args.html +=
+          '<use data-ctrl-ec-id="' +
+          args.node.id +
+          '" xlink:href="#heart" x="' +
+          args.p.xb +
+          '" y="' +
+          args.p.yb +
+          '"/>';
+    });
+  </script>
+</html>

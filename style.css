@@ -1,0 +1,26 @@
+/*CSS*/
+html, body{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin:0;
+  overflow: hidden;
+  font-family: Helvetica;
+}
+#tree{
+  width:100%;
+  height:100%;
+}
+button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-size: 24px;
+  z-index: 11111;
+}
+svg.tommy .node.male>rect {
+  fill: #039be5 !important;
+} 
+svg.tommy .node.female>rect {
+  fill: #f57b00 !important;
+} 
